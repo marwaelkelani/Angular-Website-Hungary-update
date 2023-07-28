@@ -1,0 +1,55 @@
+<h1>Got a Tech Idea for Hungary?</h1>
+<h2>Let us know below!</h2>
+
+<div style="width: 95vw" class='mx-4 my-4' id="formdiv">
+    <form [formGroup]="techIdeaForm" class="p-4">
+        <!-- Name -->
+        <div class="mb-3">
+            <label class="form-label">Name:</label>
+            <input type="text" formControlName="name" class="form-control">
+        
+            <span *ngIf="name.touched && name.errors?.['required']" [ngStyle]="{'color': redColor}">The name field is required</span>
+            <span *ngIf="name.dirty && name.errors?.['minlength']" [ngStyle]="{'color': redColor}">The minimum length is 2 characters</span>
+            <span *ngIf="name.dirty && name.errors?.['prohibited']" [ngStyle]="{'color': redColor}">Name cannot contain the word 'tourist'</span>
+            <!-- inlcude an ngIf about using a prohibited word with /tourist/ -->
+            <br>
+        </div>
+
+        <!-- Age -->
+        <div class="mb-3">
+            <label class="form-label">Age:</label>
+            <input type="number" formControlName="age" class="form-control">
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+        <label class="form-label">Email:</label>
+           <input type="email" formControlName="email" class="form-control">
+            <span *ngIf="email.touched && email.errors?.['required']" [ngStyle]="{'color': redColor}">Please enter a valid email address.</span>
+            <span *ngIf="email.dirty && email.errors?.['email']" [ngStyle]="{'color': redColor}">Please enter a valid email address.</span><br><br>
+        </div>
+
+        <!-- Target City -->
+        <label class="form-label">Target City:</label>
+        <select for="cityNames"  formControlName="target_city" class="form-control">
+            <option placeholder="Select a City">-- Select --</option>
+            <option value="Select a city" *ngFor="let city of cityNames">{{city.name}}</option>
+        </select>
+        <div [ngStyle]="{'color': redColor}" *ngIf="target_city.touched && target_city.errors?.['required']">Please select a city.</div> 
+       <br><br>
+
+        <!-- Tech Idea -->
+        <label class="form-label">Tech Idea:</label><br>
+        <textarea rows="4" cols="50" formControlName="tech_idea" class="form-control"></textarea>
+        <div *ngIf="tech_idea.touched && tech_idea.errors?.['required']" [ngStyle]="{'color': redColor}">Please include a brief description about your project.</div>
+        <div *ngIf="tech_idea.dirty && tech_idea.errors?.['minlength']" [ngStyle]="{'color': redColor}">Please write a minimum of 100 characters about your project.</div>
+        <div *ngIf="tech_idea.dirty && tech_idea.errors?.['prohibited']" [ngStyle]="{'color': redColor}">You cannot write nothing.</div>
+        <!-- Include an ngIf for if the word 'nothing is included' -->
+        <br><br>
+
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-success mx-2" [disabled]="techIdeaForm.invalid" (click)="onClick()">Submit</button>
+
+        <button type="button" class="btn btn-primary mx-2" (click)="exitFormPage()">Exit Form</button>
+      </form>
+</div>

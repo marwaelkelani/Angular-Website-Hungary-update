@@ -1,0 +1,15 @@
+<h1>Cities in Hungary</h1>
+
+<div class="row">
+<div class="card col-3 offset-1 m-5 p-2" *ngFor="let city of cities">
+    <img src="{{city.imgURL}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 [ngClass]="{'green-font': city.attractions.length >2, 'black-font': city.attractions.length <3 }">{{city.name}}</h5>
+        <p class="card-text">Main Attractions</p>
+      <ul>
+        <li *ngFor="let attractions of city.attractions">{{attractions.attraction_name}}</li>
+      </ul>
+    </div>
+  </div>
+
+</div>

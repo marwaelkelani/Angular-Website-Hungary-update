@@ -1,0 +1,38 @@
+
+    <h1>Weather in {{weather.name}}</h1>
+
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th colspan=2>Spring</th>
+                <th colspan=2>Summer</th>
+                <th colspan=2>Autumn</th>
+                <th colspan=2>Winter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Spring Morning</th>
+                <th>Spring Evening</th>
+                <th>Summer Morning</th>
+                <th>Summer Evening</th>
+                <th>Autumn Morning</th>
+                <th>Autumn Evening</th>
+                <th>Winter Morning</th>
+                <th>Winter Evening</th>
+            </tr>
+            <tr>
+                <td>{{weather.springM}}</td>
+                <td>{{weather.springN}}</td>
+                <td>{{weather.summerM}}</td>
+                <td>{{weather.summerN}}</td>
+                <td>{{weather.autumnM}}</td>
+                <td>{{weather.autumnN}}</td>
+                <td>{{weather.winterM}}</td>
+                <td>{{weather.winterN}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div><span appImportantText><b>Pro Tip:</b></span> The most suitable time to enjoy your holiday in {{weather.visitFrom}} and {{weather.visitTo}}.</div><br>
+   
+

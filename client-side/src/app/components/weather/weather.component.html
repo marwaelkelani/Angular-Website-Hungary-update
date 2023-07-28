@@ -1,0 +1,14 @@
+<p>Click on a city to see the estimated weather forecast.</p>
+
+<div>
+    <ul>
+        <li *ngFor="let weather of weatherData">
+            <!-- <a [routerLink]="['/weather', weather.name, weather.springN, weather.springM, weather.summerN, weather.summerM, weather.winterN, weather.winterM, weather.autumnN, weather.autumnM, weather.visitFrom, weather.visitTo]">{{weather.name}}
+            </a> -->
+            <a [routerLink]="['/weather', weather.id]">{{weather.name}}
+            </a>
+            
+        </li>
+    </ul>
+</div>
+
