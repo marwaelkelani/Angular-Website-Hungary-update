@@ -1,4 +1,4 @@
-# Angular Website about Hungary
+# Angular website about Hungary
 
 **Dependencies**
 <ul>
