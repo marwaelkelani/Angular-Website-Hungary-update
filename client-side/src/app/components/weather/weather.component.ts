@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Iweather } from 'src/app/interfaces/iweather';
 import { GetweatherService } from 'src/app/services/getweather.service';
@@ -14,7 +15,18 @@ weatherData!:Iweather[];
 weatherDetails!: Iweather;
 id!:number;
 
-constructor(private weatherDetailsService: GetweatherdetailsService, private weatherService: GetweatherService, private routeService: ActivatedRoute){
+//Weather Form API
+public weatherSearchForm!: FormGroup
+weatherDataAPI: any;
+
+constructor(private weatherDetailsService: GetweatherdetailsService, private weatherService: GetweatherService, private routeService: ActivatedRoute, private fb:FormBuilder){
+  //Weather Form with API
+  this.weatherSearchForm = this.fb.group({
+    location: ['']
+  });
+  
+  
+  
   //Get weather from the database
 
   let id = this.routeService.snapshot.paramMap.get('id');
@@ -41,6 +53,13 @@ constructor(private weatherDetailsService: GetweatherdetailsService, private wea
     }
   });
 
-
 }
+
+weatherAPI(formValues: any){
+ this.weatherDetailsService.getWeatherAPI(formValues.location).subscribe((data)=>{
+  this.weatherDataAPI = data;
+  console.log(this.weatherDataAPI)
+ })
+}
+
 }
